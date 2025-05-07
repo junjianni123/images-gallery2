@@ -11,23 +11,25 @@ const App = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     console.log(word);
-    fetch(`https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLASH_KEY}`)
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      `https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLASH_KEY}`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
         console.log(data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-      })
-      setWord('');
-    }
+      });
+    setWord('');
+  };
 
   return (
     <div>
-      <Header title="Images Gallery"/>
-      <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit}/>
+      <Header title="Images Gallery" />
+      <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit} />
     </div>
   );
-}
+};
 
 export default App;
