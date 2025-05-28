@@ -51,3 +51,5 @@ const App = () => {
 };
 
 export default App;
+
+// Add sthg for testing purposes.
