@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 import requests
 import os
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 # Load environment variables
 load_dotenv(dotenv_path="./.env.local")
@@ -18,7 +19,7 @@ if not UNSPLASH_KEY:
   raise EnvironmentError("Please create .env.local file and insert there UNSPLASH_KEY")
 
 app = Flask(__name__)
-# CORS(app)  # Enable CORS for all routes
+CORS(app)  # Enable CORS for all routes
 
 # Get Unsplash API key from environment
 # UNSPLASH_ACCESS_KEY = os.getenv('UNSPLASH_ACCESS_KEY')
