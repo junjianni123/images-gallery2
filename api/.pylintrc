@@ -1,0 +1,36 @@
+[MASTER]
+# Use multiple processes to speed up Pylint
+jobs=1
+
+# Files or directories to be skipped
+ignore=CVS,.git,__pycache__,.vscode
+
+[MESSAGES CONTROL]
+# Disable specific warning/error codes
+disable=
+    C0114,  # missing-module-docstring
+    C0116,  # missing-function-docstring
+    R0903,  # too-few-public-methods
+    R0913,  # too-many-arguments
+
+[FORMAT]
+# Maximum number of characters on a single line
+max-line-length=88
+
+# String used as indentation unit
+indent-string='    '
+
+[SIMILARITIES]
+# Minimum lines number of a similarity
+min-similarity-lines=4
+
+[BASIC]
+# Good variable names which should always be accepted
+good-names=i,j,k,ex,Run,_,id,app
+
+[DESIGN]
+# Maximum number of attributes for a class
+max-attributes=7
+
+# Maximum number of locals for function / method body
+max-locals=15

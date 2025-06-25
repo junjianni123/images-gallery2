@@ -7,5 +7,19 @@
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
-    }
-}
+    },
+    "python.defaultInterpreterPath": "C:/Users/u475181/.virtualenvs/api-s6b97tCo/Scripts/python",
+    "python.linting.enabled": true,
+    "python.linting.pycodestyleArgs": [
+        "--max-line-length=88"
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "python.analysis.typeCheckingMode": "basic"
+}   
