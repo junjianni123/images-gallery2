@@ -103,8 +103,73 @@ fetch(`https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLAS
 fetch(`http://localhost:5000/api/images/random?query=${word}`)
 ```
 
+## Docker Setup
+
+### Building and Running with Docker
+
+#### Development Mode
+
+1. **Build the Docker image:**
+   ```bash
+   cd api
+   docker build -t image-gallery-api .
+   ```
+
+2. **Run the container:**
+   ```bash
+   docker run -p 5000:5000 --env-file .env.local image-gallery-api
+   ```
+
+3. **Or use docker-compose (recommended):**
+   ```bash
+   # From the project root
+   docker-compose up --build
+   ```
+
+#### Production Mode
+
+1. **Build production image:**
+   ```bash
+   cd api
+   docker build -f Dockerfile.prod -t image-gallery-api:prod .
+   ```
+
+2. **Run production container:**
+   ```bash
+   docker run -p 5000:5000 --env-file .env.local image-gallery-api:prod
+   ```
+
+### Docker Commands
+
+```bash
+# Build image
+docker build -t image-gallery-api .
+
+# Run container
+docker run -d -p 5000:5000 --name api-container image-gallery-api
+
+# View logs
+docker logs api-container
+
+# Stop container
+docker stop api-container
+
+# Remove container
+docker rm api-container
+
+# Health check
+curl http://localhost:5000/health
+```
+
+### Environment Variables
+
+Create a `.env.local` file with:
+```
+UNSPLASH_KEY=your_unsplash_access_key_here
+DEBUG=True
+FLASK_ENV=development
+```
+
 ## Development
 
-- The server runs in debug mode by default
-- CORS is enabled for all origins
-- Environment variables are loaded from `.env` file
+### Option 1: Using pipenv (Recommended)

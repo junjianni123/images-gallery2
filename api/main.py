@@ -37,15 +37,16 @@ def new_image():
     response = requests.get(url=UNSPLASH_URL, headers=headers, params=params)
     data = response.json()
     return data
-    # headers = {
-    #   "Accept-Version": "v1",
-    #   "Authorization": "Client-ID " + UNSPLASH_KEY
-    # }
-    # params = {"query": word}
-    # response = requests.get(url=UNSPLASH_URL, headers=headers, params=params)
 
-    # data = response.json()
-    # return data
+
+@app.route("/health")
+def health_check():
+    """Health check endpoint for Docker and monitoring"""
+    return jsonify({
+        "status": "healthy",
+        "timestamp": "2025-07-09",
+        "service": "image-gallery-api"
+    })
 
 
 # @app.route('/api/images/search', methods=['GET'])
