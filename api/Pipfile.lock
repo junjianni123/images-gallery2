@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ab30d14fc93afcdc50bd6952f470447f7f602ef5f15463e74e6f338b6cdcd90c"
+            "sha256": "39360f4fa5386f8f39936e0edde69ea0dbbb935b68615918aa41bc698b6694c5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -26,11 +26,12 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:2e0c7ce7cb5d8f8634ca55d2ba7e6ec2689a2fd6537d8dec1296a477a4910057",
-                "sha256:d747aa5a8b9bbbb1bb8c22bb13e22bd1f18e9796defa16bab421f7f7a317323b"
+                "sha256:6b31f564a415d79ee77df69d757bb49a5bb53bd9f756cbbe24394ffd6fc1f4b2",
+                "sha256:8ea99dbdfaaf2ba2f9bac77b9249ef62ec5218e7c2b2e903378ed5fccf765995"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.7'",
-            "version": "==2025.6.15"
+            "version": "==2025.7.14"
         },
         "charset-normalizer": {
             "hashes": [
@@ -257,12 +258,12 @@
         },
         "python-dotenv": {
             "hashes": [
-                "sha256:41f90bc6f5f177fb41f53e87666db362025010eb28f60a01c9143bfa33a2b2d5",
-                "sha256:d7c01d9e2293916c18baf562d95698754b0dbbb5e74d457c45d4f6561fb9d55d"
+                "sha256:31f23644fe2602f88ff55e1f5c79ba497e01224ee7737937930c448e4d0e24dc",
+                "sha256:a8a6399716257f45be6a007360200409fce5cda2661e3dec71d23dc15f6189ab"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.9'",
-            "version": "==1.1.0"
+            "version": "==1.1.1"
         },
         "requests": {
             "hashes": [
@@ -293,11 +294,11 @@
     "develop": {
         "astroid": {
             "hashes": [
-                "sha256:104fb9cb9b27ea95e847a94c003be03a9e039334a8ebca5ee27dafaf5c5711eb",
-                "sha256:c332157953060c6deb9caa57303ae0d20b0fbdb2e59b4a4f2a6ba49d0a7961ce"
+                "sha256:1e5a5011af2920c7c67a53f65d536d65bfa7116feeaf2354d8b94f29573bb0ce",
+                "sha256:54c760ae8322ece1abd213057c4b5bba7c49818853fc901ef09719a60dbf9dec"
             ],
             "markers": "python_full_version >= '3.9.0'",
-            "version": "==3.3.10"
+            "version": "==3.3.11"
         },
         "black": {
             "hashes": [

@@ -2,6 +2,62 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Docker Setup
+
+### Development with Docker
+
+1. **Build the Docker image:**
+   ```bash
+   docker build -t image-gallery-frontend .
+   ```
+
+2. **Run the container:**
+   ```bash
+   docker run -p 3000:3000 -e REACT_APP_API_URL=http://localhost:5000 image-gallery-frontend
+   ```
+
+3. **Or use docker-compose (recommended):**
+   ```bash
+   # From the project root
+   docker-compose up --build
+   ```
+
+### Production with Docker
+
+1. **Build production image:**
+   ```bash
+   docker build -f Dockerfile.prod -t image-gallery-frontend:prod .
+   ```
+
+2. **Run production container:**
+   ```bash
+   docker run -p 80:80 image-gallery-frontend:prod
+   ```
+
+3. **Production docker-compose:**
+   ```bash
+   # From the project root
+   docker-compose -f docker-compose.prod.yml up --build
+   ```
+
+### Using PowerShell Helper Script
+
+```powershell
+# Build and run development
+.\docker.ps1 build
+.\docker.ps1 run
+
+# Check logs
+.\docker.ps1 logs
+
+# Stop containers
+.\docker.ps1 stop
+
+# Production build and run
+.\docker.ps1 prod-build
+.\docker.ps1 prod-run
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

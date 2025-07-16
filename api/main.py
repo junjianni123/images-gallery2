@@ -2,9 +2,13 @@ import os
 
 # from flask_cors import CORS
 import requests
+import urllib3
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+
+# Disable SSL warnings for development (when verify=False)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Load environment variables
 load_dotenv(dotenv_path="./.env.local")
@@ -34,9 +38,30 @@ def new_image():
     word = request.args.get("query")
     headers = {"Accept-Version": "v1", "Authorization": f"Client-ID {UNSPLASH_KEY}"}
     params = {"query": word}
-    response = requests.get(url=UNSPLASH_URL, headers=headers, params=params)
-    data = response.json()
-    return data
+    
+    try:
+        # Add timeout and SSL verification settings for Docker compatibility
+        response = requests.get(
+            url=UNSPLASH_URL, 
+            headers=headers, 
+            params=params,
+            timeout=30,
+            verify=False  # Disable SSL verification for Docker development
+        )
+        response.raise_for_status()  # Raise an exception for bad status codes
+        data = response.json()
+        return data
+    except requests.exceptions.SSLError as e:
+        print(f"SSL Error: {e}")
+        return jsonify({"error": "SSL connection failed. Please check network configuration."}), 500
+    except requests.exceptions.Timeout:
+        return jsonify({"error": "Request timeout. Please try again."}), 504
+    except requests.exceptions.RequestException as e:
+        print(f"Request Error: {e}")
+        return jsonify({"error": "Failed to fetch images from Unsplash API."}), 500
+    except Exception as e:
+        print(f"Unexpected Error: {e}")
+        return jsonify({"error": "An unexpected error occurred."}), 500
 
 
 @app.route("/health")
