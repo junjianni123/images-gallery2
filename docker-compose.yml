@@ -9,7 +9,6 @@ services:
     environment:
       - FLASK_ENV=development
       - DEBUG=True
-      - UNSPLASH_KEY=${UNSPLASH_KEY:-}
     env_file:
       - ./api/.env.local
     volumes:
