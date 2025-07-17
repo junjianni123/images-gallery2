@@ -1,5 +1,6 @@
 services:
   api:
+    restart: always
     build: 
       context: ./api
       dockerfile: Dockerfile
@@ -14,11 +15,11 @@ services:
     volumes:
       - ./api:/app
       - /app/.venv
-    restart: unless-stopped
     networks:
       - image-gallery-network
 
   frontend:
+    restart: always
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -26,13 +27,13 @@ services:
     ports:
       - "3000:3000"
     environment:
+      - CHOKIDAI_USEPOLLING=true      
       - REACT_APP_API_URL=http://localhost:5000
     depends_on:
       - api
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    restart: unless-stopped
     networks:
       - image-gallery-network
 
