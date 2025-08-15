@@ -4,17 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-requests = "*"
-python-dotenv = "*"
-flask-cors = "*"
-certifi = "*"
-pymongo = "*"
 
 [dev-packages]
-pycodestyle = "*"
-black = "*"
-pylint = "*"
 
 [requires]
 python_version = "3.12"

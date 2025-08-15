@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+# from mongo_client import insert_test_document
+
 # Disable SSL warnings for development (when verify=False)
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -32,6 +34,7 @@ CORS(app)  # Enable CORS for all routes
 # UNSPLASH_ACCESS_KEY = os.getenv('UNSPLASH_ACCESS_KEY')
 app.config["DEBUG"] = DEBUG
 
+# insert_test_document()  # Insert a test document into MongoDB
 
 @app.route("/new-image")
 def new_image():
