@@ -6,9 +6,10 @@ import urllib3
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from mongo_client import mongo_client
 
-# from mongo_client import insert_test_document
-
+gallery = mongo_client.gallery
+images_collection = gallery.images
 # Disable SSL warnings for development (when verify=False)
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -76,8 +77,23 @@ def health_check():
         "service": "image-gallery-api"
     })
 
-
-# @app.route('/api/images/search', methods=['GET'])
+@app.route("/images", methods=["GET", "POST"])
+def images():
+    if request.method == "GET":
+        # read images from the database
+        images = images_collection.find({})
+        return jsonify([img for img in images])
+    if request.method == "POST":
+        # save image in the database
+        image = request.get_json()
+        image["_id"] = image.get("id")
+        # return jsonify(images_collection.insert_one(image))
+        # image["_id"] = image.get("id")
+        result = images_collection.insert_one(image)
+        inserted_id = result.inserted_id
+        return {"inserted_id": inserted_id}
+    
+    # @app.route('/api/images/search', methods=['GET'])
 # def search_images():
 #     """Search for images using Unsplash API"""
 #     try:
